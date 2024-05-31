@@ -5,10 +5,10 @@
 #include <time.h>
 
 #define ROWS 30
-#define COLS 60
-#define CLEAR_SCREEN() printf("\033[1;1H\033[2J")
-#define DRAW_LIVE_CELL() printf("#")
-#define DRAW_DEAD_CELL() printf(".")
+#define COLS 40
+#define CLEAR_SCREEN()   printf("\033[1;1H\033[2J")
+#define DRAW_LIVE_CELL() printf("\u2B1C")
+#define DRAW_DEAD_CELL() printf("\u2B1B")
 
 int cells[ROWS][COLS] = {0};
 
@@ -59,13 +59,6 @@ void gen_random_population(void)
             cells[i][j] = (int) rand() % 2;
         }
     }
-
-    // glader
-    //cells[0][1] = 1;
-    //cells[1][2] = 1;
-    //cells[2][0] = 1;
-    //cells[2][1] = 1;
-    //cells[2][2] = 1;
 }
 
 void draw_grid(void)
