@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <time.h>
 
 #define ROWS 30
-#define COLS 60 
+#define COLS 60
 #define CLEAR_SCREEN() printf("\e[1;1H\e[2J")
-#define DRAW_DEAD_CELL() printf(" ")
 #define DRAW_LIVE_CELL() printf("#")
+#define DRAW_DEAD_CELL() printf(".")
 
 int cells[ROWS][COLS] = {0};
 
@@ -17,6 +18,8 @@ int neighbors(int i, int j);
 
 int main(void)
 {
+    srand(time(0));
+
     int new_cells[ROWS][COLS] = {0};
 
     gen_random_population();
@@ -53,7 +56,7 @@ void gen_random_population(void)
 {
     for(int i = 0; i < ROWS; i++) {
         for(int j = 0; j < COLS; j++) {
-            cells[i][j] = rand() % 2;
+            cells[i][j] = (int) rand() % 2;
         }
     }
 
@@ -90,7 +93,7 @@ int neighbors(int i, int j)
 
     // left
     if(j != 0 && cells[i][j-1] == 1) live_neighbors += 1;
-    // right 
+    // right
     if(j < COLS && cells[i][j+1] == 1) live_neighbors += 1;
 
     // bottom left
