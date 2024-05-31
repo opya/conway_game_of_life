@@ -6,7 +6,7 @@
 
 #define ROWS 30
 #define COLS 60
-#define CLEAR_SCREEN() printf("\e[1;1H\e[2J")
+#define CLEAR_SCREEN() printf("\033[1;1H\033[2J")
 #define DRAW_LIVE_CELL() printf("#")
 #define DRAW_DEAD_CELL() printf(".")
 
